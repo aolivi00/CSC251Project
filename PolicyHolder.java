@@ -16,6 +16,16 @@ public class PolicyHolder
       policyHeight = height;
       policyWeight = weight;
    }
+   
+   public PolicyHolder(PolicyHolder object2)
+   {
+      policyFirstName = object2.policyFirstName;
+      policyLastName = object2.policyLastName;
+      smoking = object2.smoking;
+      policyAge = object2.policyAge;
+      policyHeight = object2.policyHeight;
+      policyWeight = object2.policyWeight;
+   }
 
    //Setters
 
@@ -170,4 +180,16 @@ public class PolicyHolder
       return policyWeight;
    }
 
+
+   public String toString()
+   {
+      return String.format("\nPolicyholder's First Name: " + policyFirstName + 
+         "\nPolicyholder's Last Name: " + policyLastName + 
+         "\nPolicyholder's Age: " + policyAge +
+         "\nPolicyholder's Smoking Status (Y/N): " + smoking +
+         "\nPolicyholder's Height: " + policyHeight + " inches" +
+         "\nPolicyholder's Weight: " + policyWeight + " pounds" +
+         "\nPolicyholder's BMI: %.2f" +
+         "\nPolicy Price: $%.2f", getBMI(), getPolicyPrice());
+   }
 }
