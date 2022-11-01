@@ -11,7 +11,7 @@ public class Policy
    /**
       Constructor that accepts argument for each field
       @param number Policy number
-      @param name Provider name
+      @param name Provider name 
    */
    
    public Policy(int number, String name, PolicyHolder holder)
