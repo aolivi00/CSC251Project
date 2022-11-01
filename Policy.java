@@ -3,6 +3,8 @@ public class Policy
    //Declaring the Fields
    private String providerName;
    private int policyNumber = 0;
+   private PolicyHolder policyholder;
+   private static int count = 0;
 
 
 
@@ -12,10 +14,12 @@ public class Policy
       @param name Provider name
    */
    
-   public Policy(int number, String name)
+   public Policy(int number, String name, PolicyHolder holder)
    {
       providerName = name;
       policyNumber = number;
+      policyholder = new PolicyHolder(holder);
+      count++;
    }
 
    //Setters
@@ -37,37 +41,16 @@ public class Policy
    {
       providerName = name;
    }
+   
+   public void setPolicyHolder(PolicyHolder holder)
+   {
+      policyholder = new PolicyHolder(holder);
+   }
 
 
 
    //Getters
 
-
-   /**
-      The getPolicyPrice 
-      @return Policy price
-   */
-    public double getPolicyPrice()
-    {
-        double base_price = 600;
-        
-        if (policyAge > 50)
-        {
-            base_price +=75;
-        }
-        
-        if (smoking.equals("smoker"))
-        {
-            base_price +=100;
-        }
-        
-        if (getBMI() > 35)
-        {
-            base_price += (getBMI() - 35) * 20.0;
-        }
-
-        return base_price;
-    }
 
    /**
       The getNumber 
@@ -85,5 +68,25 @@ public class Policy
    public String getName()
    {
       return providerName;
+   }
+   
+   public String getSmoking()
+   {
+      return policyholder.getSmoker();
+   }
+   
+   public int getCount()
+   {
+      return count;
+   }
+   
+   public PolicyHolder getPolicyHolder()
+   {
+      return new PolicyHolder(policyholder); 
+   }
+   
+   public String toString()
+   {
+      return String.format("Policy Number: " + policyNumber + "\nProvider Name: " + providerName + policyholder.toString());
    }
 }
